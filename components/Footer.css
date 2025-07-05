@@ -1,0 +1,14 @@
+.footer-box{
+    background-color: blue;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 30px ;
+}
+
+.footer-text{
+    font-weight: bolder;
+    color: white;
+    padding: 5px;
+}
+
