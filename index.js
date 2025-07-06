@@ -10,7 +10,7 @@ import RestrauntMenu from './components/RestrauntMenu';
 
 import {createBrowserRouter, RouterProvider} from 'react-router';
 import Restraunts from './components/Restraunts';
-
+import { BrowserRouter } from 'react-router-dom';
 const Cart = lazy(() => {
     console.log("cart bundle requested");
     return import('./components/Cart')
@@ -19,7 +19,7 @@ const Cart = lazy(() => {
 const appRouter = createBrowserRouter([
     {
         path:"/",
-        element: <App/>,
+        element: <BrowserRouter><App/></BrowserRouter>,
         errorElement: <Error/>,
         children:[
             {

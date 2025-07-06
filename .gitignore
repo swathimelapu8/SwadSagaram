@@ -1,3 +1,5 @@
 /dist
-/nodemodules
+/node_modules
 .parcel-cache
+/coverage
+/swiggyAPI.json
