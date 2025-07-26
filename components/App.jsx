@@ -1,8 +1,6 @@
 import NavBar from "./NavBar";
-import Restraunts from "./Restraunts";
 import Footer from "./Footer";
-import React,{useState} from "react";
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import {useOnlineStatus} from '../utilities/useOnlineStatus';
 
 

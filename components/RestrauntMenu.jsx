@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 
 export default function RestrauntMenu() {
 

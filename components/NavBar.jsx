@@ -1,6 +1,6 @@
-import React,{ useState } from 'react';
+import { useState } from 'react';
 import './NavBar.css';
-import { Link } from 'react-router-dom'; // ✅ Correct
+import { Link } from 'react-router-dom'; 
 
 
 function NavBar() {
@@ -8,7 +8,6 @@ function NavBar() {
   const [btnText,setbtnText] = useState("Login");
   return (
     <div className="navbar">
-
         <div className="logo">
             <div><Link to="/" className="logo-link">SwadSagaram</Link></div>
         </div>
