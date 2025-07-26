@@ -11,9 +11,10 @@ function App() {
   return (
     <div>
       <NavBar />
-      {!isOnline ? <h1>Looks like you are offline, please turn on the internet</h1>:<Outlet/>}
+      <div style={{marginTop:'80px'}}></div>
+        {!isOnline ? <h1>Looks like you are offline, please turn on the internet</h1>:<Outlet />}
       <Footer/>
-    </div> 
+      </div>
   );
 }
 

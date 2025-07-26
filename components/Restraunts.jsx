@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useRestrauntData from "../utilities/useRestrauntData";
-import RestrauntCard from "./RestrauntCard";
+import {RestrauntCard,withDiscount} from "./RestrauntCard";
+
 import Shimmer from "./ShimmerUI";
 import './Restraunts.css';
 import ShimmerUI from "./ShimmerUI";
@@ -17,7 +18,7 @@ const Restraunts = () => {
     listData && setListOfRestaurants(listData);
   }, [listData]);
 
-  // debouncing the filtering logic
+  const RestrauntCardWithDiscount = withDiscount(RestrauntCard);
 
   useEffect(() => {
     console.log("getting restraunt with searched text" + searchedText);
@@ -54,14 +55,14 @@ const Restraunts = () => {
 
       <div className="restro-container">
         {(listOfRestraunts.length === 0) ? (<h1>No restraunts found with {searchedText}</h1>) : listOfRestraunts.map((restrauntDetails) => (
-          <Link to={"restraunts/" + restrauntDetails.info.id} key={restrauntDetails.info.id}> <RestrauntCard restrauntDetails={restrauntDetails} /> </Link>
+          <Link to={"restraunts/" + restrauntDetails.info.id} key={restrauntDetails.info.id} style={{textDecoration: "none"}}> {(restrauntDetails.info?.aggregatedDiscountInfoV3)?<RestrauntCardWithDiscount restrauntDetails={restrauntDetails} discountText={restrauntDetails.info?.aggregatedDiscountInfoV3.header+" "+restrauntDetails.info?.aggregatedDiscountInfoV3.subHeader} />: <RestrauntCard restrauntDetails={restrauntDetails} />} </Link>
         ))}
       </div>
       
       </>
       )
     }
-      <div ref={observerRef} style={{ height: '50px', textAlign: 'center' , background:'grey'}}></div>
+      <div ref={observerRef} style={{ height: '50px', textAlign: 'center'}}></div>
     </>
   )
 

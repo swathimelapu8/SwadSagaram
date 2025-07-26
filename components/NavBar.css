@@ -7,7 +7,8 @@
     background-color: blue;
     justify-content:space-between;
     top: 0px;
-    position:sticky;
+    position:fixed;
+    z-index: 1000;
     
 }
 .logo{

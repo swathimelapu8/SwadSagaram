@@ -66,6 +66,9 @@
 .search-bar{
     margin-top:10px;
     text-align: center;
+    position: sticky;
+    z-index: 999;
+    top:80px;
 }
 
 .search-input{
