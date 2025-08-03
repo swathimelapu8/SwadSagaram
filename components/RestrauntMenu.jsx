@@ -27,13 +27,15 @@ export default function RestrauntMenu() {
     // const {itemCards} = cards?.menuItem?.card?.card?.itemCards;
     console.log("The below are menu items cards ");
     console.log(cards);
-    console.log("open is",open);
-    return <div style={{ textAlign: 'center' }}>
-        <h1>{name}</h1>
-        <h3>{cuisines.join(",")} - {costForTwoMessage}</h3>
-        {cards.slice(1)?.map((menu) => (
-            (!menu?.card?.card?.carousel) && <div key={menu?.card?.card?.categoryId} style={{width:"80%",margin:"0% 10%"}}>
-               {(menu?.card?.card?.title) && <div style={{display:"flex", justifyContent:"space-between"}}>
+    console.log("open is", open);
+    return <div >
+        <div style={{ textAlign: 'center' }}>
+            <h1>{name}</h1>
+            <h3>{cuisines.join(",")} - {costForTwoMessage}</h3>
+        </div>
+        {cards && cards.slice(1)?.map((menu) => (
+            (!menu?.card?.card?.carousel) && (menu?.card?.card?.title) && <div key={menu?.card?.card?.categoryId} style={{ width: "80%",padding:"8px", margin: "1% 10%",backgroundColor:"#ADD8E6",borderRadius:"5px" }}>
+                {(menu?.card?.card?.title) && <div style={{ display: "flex", justifyContent: "space-between",alignItems:"center" }}>
                     <div><h2>{menu?.card?.card?.title}</h2></div>
                     <div>
                         <button onClick={() => {
@@ -43,14 +45,14 @@ export default function RestrauntMenu() {
                     </div>
                 </div>}
 
-
+                
                 {(open === menu?.card?.card?.categoryId) &&
 
                     ((menu?.card?.card?.categories) ? (menu?.card?.card?.categories?.map((categoryItems) => (
-                        <div key={categoryItems?.categoryId}>
+                        <div key={categoryItems?.categoryId} >
                             <h3>{categoryItems?.title}</h3>
                             {categoryItems.itemCards.map((subCategory) => (
-                                <div key={subCategory?.card?.info?.id}>
+                                <div key={subCategory?.card?.info?.id} style={{backgroundColor:"#4682B4",padding:"2px 5px",margin:"5px 0px",borderRadius:"5px"}}>
 
                                     <h4>{subCategory?.card?.info?.name}</h4>
                                     <p>{subCategory?.card?.info?.description}</p>
@@ -58,13 +60,14 @@ export default function RestrauntMenu() {
                             ))}
                         </div>
                     ))) :
-                    (menu?.card?.card?.itemCards?.map((itemCard) => (
-                        <div key={itemCard?.card?.info?.id}>
-                            <h4>{itemCard?.card?.info?.name}</h4>
-                            <p>{itemCard?.card?.info?.description}</p>
-                        </div>
-                    ))))
+                        (menu?.card?.card?.itemCards?.map((itemCard) => (
+                            <div key={itemCard?.card?.info?.id} style={{backgroundColor:"#4682B4",padding:"2px 5px",margin:"5px 0px",borderRadius:"5px"}}>
+                                <h4>{itemCard?.card?.info?.name}</h4>
+                                <p>{itemCard?.card?.info?.description}</p>
+                            </div>
+                        ))))
                 }
+
                 <div>
 
                 </div>
