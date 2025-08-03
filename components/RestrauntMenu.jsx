@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 export default function RestrauntMenu() {
 
     const [resInfo, setResInfo] = useState(null);
+    const [open, setOpen] = useState(null);
 
     const resId = useParams().id;
     console.log("calling useparams")
@@ -26,22 +27,52 @@ export default function RestrauntMenu() {
     // const {itemCards} = cards?.menuItem?.card?.card?.itemCards;
     console.log("The below are menu items cards ");
     console.log(cards);
-    return <>
+    console.log("open is",open);
+    return <div style={{ textAlign: 'center' }}>
         <h1>{name}</h1>
         <h3>{cuisines.join(",")} - {costForTwoMessage}</h3>
-        {cards.slice(1)?.map((menu, i) => (
-            <div key={menu?.card?.card?.categoryId ?? `menu-${i}`}>
-                {menu?.card?.card?.itemCards?.map((categoryItems, j) => (
-                    <div key={categoryItems?.card?.info?.id ?? `item-${j}`}>
-                        <h3>{categoryItems?.card?.info?.name}</h3>
-                        <p>{categoryItems?.card?.info?.description}</p>
+        {cards.slice(1)?.map((menu) => (
+            (!menu?.card?.card?.carousel) && <div key={menu?.card?.card?.categoryId} style={{width:"80%",margin:"0% 10%"}}>
+               {(menu?.card?.card?.title) && <div style={{display:"flex", justifyContent:"space-between"}}>
+                    <div><h2>{menu?.card?.card?.title}</h2></div>
+                    <div>
+                        <button onClick={() => {
+                            debugger;
+                            return (open === menu?.card?.card?.categoryId) ? setOpen(null) : setOpen(menu?.card?.card?.categoryId)
+                        }}>{(open === menu?.card?.card?.categoryId) ? "↑" : "↓"}</button>
                     </div>
-                ))}
+                </div>}
+
+
+                {(open === menu?.card?.card?.categoryId) &&
+
+                    ((menu?.card?.card?.categories) ? (menu?.card?.card?.categories?.map((categoryItems) => (
+                        <div key={categoryItems?.categoryId}>
+                            <h3>{categoryItems?.title}</h3>
+                            {categoryItems.itemCards.map((subCategory) => (
+                                <div key={subCategory?.card?.info?.id}>
+
+                                    <h4>{subCategory?.card?.info?.name}</h4>
+                                    <p>{subCategory?.card?.info?.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    ))) :
+                    (menu?.card?.card?.itemCards?.map((itemCard) => (
+                        <div key={itemCard?.card?.info?.id}>
+                            <h4>{itemCard?.card?.info?.name}</h4>
+                            <p>{itemCard?.card?.info?.description}</p>
+                        </div>
+                    ))))
+                }
+                <div>
+
+                </div>
             </div>
         ))}
 
 
-    </>
+    </div>
 
 
 
