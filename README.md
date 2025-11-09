@@ -1,7 +1,7 @@
 # SwadSagaram
 A React JS application developed with learnings from Namaste React JS course. The project's restraunts related data is backed by Swiggy's APIs. Documenting all the learnings here.
 
-Implemented Infinite Scrolling for Restraunts:  
+# Implemented Infinite Scrolling for Restraunts:  
 -> Implemented a div in the bottom of Restraunts component.    
 -> In useRestarunts component when the initial fetch happens, storing the next offset value in a state variable     
 -> As swiggy is restricting the fetch to get the next set of restarunts, I hardcoded the data in infinteScrollDemoData.json.     
@@ -12,5 +12,9 @@ Initially after implemented the required changes also,
 ->The new batch of restraunts are not being displayed      
 As the div was being rendered conditionally, so at the time when useRestarunts is called, the div is not available.    
 ->The new batch is continously getting added which throws a duplicated key error.
-Filtered the new batch with elements that did not exist previously.       
+Filtered the new batch with elements that did not exist previously.   
 
+
+# Redux
+-> Configured a store, provided it to the App.
+-> Created a Cart slice with configuration needed, defined the initial state, define reducer functions corresponding to action.

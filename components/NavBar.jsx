@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import './NavBar.css';
 import { Link } from 'react-router-dom'; 
+import { useSelector } from 'react-redux';
 
 
 function NavBar() {
   
   const [btnText,setbtnText] = useState("Login");
+  const cartItems = useSelector((store)=>store.cart.items);
+  console.log("the items are");
+  console.log(cartItems);
   return (
     <div className="navbar">
         <div className="logo">
@@ -15,7 +19,7 @@ function NavBar() {
             <ul className="nav-items">
                 <li className="nav-item" ><Link to="/about" className="nav-item-link">About</Link></li>
                 <li className="nav-item"><Link to="/contact" className="nav-item-link">Contact</Link></li>
-                <li className="nav-item"><Link to="/cart" className="nav-item-link" >Cart</Link></li>
+                <li className="nav-item"><Link to="/cart" className="nav-item-link" >Cart - {cartItems.length}</Link></li>
             </ul>
         </div>
         <div>

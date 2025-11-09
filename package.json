@@ -21,9 +21,11 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.27.1",
+    "@reduxjs/toolkit": "^2.8.2",
     "jsdom": "^26.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^6.22.3"
   }
 }
